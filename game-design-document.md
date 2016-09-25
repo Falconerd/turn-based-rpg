@@ -48,21 +48,51 @@ We want to take the random loot aspect from the Diablo Series. Not sure to what 
 
 ### Core Gameplay
 
+Most of the gameplay will revolve around combat, as building up your party to defeat bosses is the overarching goal of the game.
+
+However, there is some debate in my mind as to whether we should include a 2d-platformer like roaming mode in between battles.
+
+| Pros | Cons |
+|------|------|
+| Can implement many other mechanics into the game | Could have many poorly implemented mechanics rather than just good battles
+| The game would be more than just a sequence of battles |
+| Could engage more with the world the game is set in |
+
 ### Genre
+
+I think instead of thinking of the game as one Genre, we should apply a bunch of applicable tags.
+
+- Dungeon Crawler
+- Turn-Based Combat
+- Multiplayer
+- Player vs Environment
+- Player vs Player
 
 ### Target Audience
 
+Dylan & Jazz, if he joins the project
+
 ### Team Members
+
+Dylan... Maybe Jazz one day
 
 ## Game Overview
 
 ### Overview
 
+I think a lot of this was covered in the High Concept. Perhaps I misused that section?
+
 ### Story
+
+High Tech, Low Life, something something Cthulu
 
 ### Characters
 
+Player characters should have their own back stories, but probably not too much of an ongoing on. The real main characters of the story should probably be NPCs.
+
 ### Environment
+
+I'd still like to use a Cyberpunk setting. However, it'd be great to mix it with some cosmic horror.
 
 ### Level Overview
 
