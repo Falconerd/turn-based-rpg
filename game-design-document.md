@@ -78,10 +78,12 @@ Any attack which hits multiple slots will only apply to each enemy once, even if
 
 Let's just designate some terms when speaking about enemy sizes.
 
-1-slot = small
-2-slot = medium
-3-slot = large
-4-slot = massive
+| Slots | Term |
+|-------|------|
+| 1 | small
+| 2 | medium
+| 3 | large
+| 4 | massive
 
 Examples
 
