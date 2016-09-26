@@ -96,6 +96,29 @@ I'd still like to use a Cyberpunk setting. However, it'd be great to mix it with
 
 ### Level Overview
 
+## Scenes
+
+The game will be split into three major scene types: Home, Field, and Battle. As well as these scenes, there will need to be the Menu scene type which can be used to display any data which doesn't fit into the game world.
+
+### Home
+
+Home is where the player can upgrade their characters and check out any other information before embarking on a mission in the Field. This is the same concept as in XCOM/Darkest Dungeon.
+
+### Field
+
+Field is the world the player walks around in during the exploration phase of the gameplay. There are a few options I've thought of for this. The one I like the most is a metroid-vania style 2d map which is randomised with different parameters we can set.
+
+- Metroidvania style 2d levels
+- Mother Russia Bleeds style 2.5d levels
+
+I don't want to include Darkest Dungeon style levels in here because I don't think they are really enjoyable, and the game mechanics don't fit with walking in a straight line.
+
+### Battle
+
+The battle scene is 
+
+### Menu
+
 ## Gameplay
 
 ### Combat
