@@ -26,7 +26,7 @@
 
 ### High Concept
 
-We want to combine some elements from great games such as Final Fantasy X, Path of Exile, Darkest Dungeon, and the Diablo series.
+We want to combine some elements from great games such as Hearthstone, Final Fantasy X, Path of Exile, Darkest Dungeon, and the Diablo series.
 
 #### Darkest Dungeon Elements
 
@@ -104,6 +104,16 @@ The game will be split into three major scene types: Home, Field, and Battle. As
 
 Home is where the player can upgrade their characters and check out any other information before embarking on a mission in the Field. This is the same concept as in XCOM/Darkest Dungeon.
 
+An alternative to this, is to just have a continuous storyline with towns along the way.
+
+Finally, we could have both. Players could have their own base, which they can customize to their liking. As well as this, they can go to towns and log off there.
+
+#### Questions
+
+1. Base, Towns or Both?
+2. Can players see other players in Towns?
+3. Can players invite other players to their Bases?
+
 ### Field
 
 Field is the world the player walks around in during the exploration phase of the gameplay. There are a few options I've thought of for this. The one I like the most is a metroid-vania style 2d map which is randomised with different parameters we can set.
@@ -113,11 +123,41 @@ Field is the world the player walks around in during the exploration phase of th
 
 I don't want to include Darkest Dungeon style levels in here because I don't think they are really enjoyable, and the game mechanics don't fit with walking in a straight line.
 
+#### Questions
+
+1. Should we make monsters visible before running into them and starting a battle?
+2. Should the player have all party members visible while walking around?
+  1. If so, should the characters all be controllable?
+  2. If so, we could set up some puzzles and things which require the use of multiple characters. (not a question, I know)
+3. Should the characters be able to jump? Climb ladders? Or just walk and use elevators or something?
+
 ### Battle
 
-The battle scene is 
+The battle scene is where all combat happens. It's explained in depth under [Combat](#combat) As of now, this combat can't be influenced by any other scenes. For example, if enemies are visible in the Field, jumping onto their head to initiate a battle doesn't help or hinder the player.
+
+#### Questions
+
+1. Should combat be influenced by the Field?
 
 ### Menu
+
+The menu should contain the following sections:
+
+#### Character Sheet
+
+Each character should have a character sheet which displays their individual stats and items, as well as any calculated stats.
+
+#### Player Overview
+
+I'm assuming the player will want some idea of their overall progress.
+
+#### Achievements/Challenges
+
+Completionists can track what they need to do to 100% the game.
+
+#### Social
+
+Should we include a social screen? (We'll have to look at [Multiplayer](#multiplayer) to decide on this one.
 
 ## Gameplay
 
@@ -167,3 +207,29 @@ ______ ______ ______ ______    ______ ______ ______ ______
 ### Abilities
 
 ...
+
+### Multiplayer
+
+The original idea I had for this game, was a TCG masquerading as an RPG. What I mean by that, is since combat is Turn-Based, we could treat characters kind of like Cards which you can upgrade.
+
+#### PvP
+
+Players can choose to duel. Upon the start of a duel, the players will be in a picking phase. When 8 characters have been picked, the players will enter the battle phase.
+
+##### Picking Phase
+
+One player will be able to pick 1 character for any slot, followed by the opposing player doing the same.
+
+##### Battle
+
+The players will have 30 seconds to commit to an action. When the timer has passed, the character whose turn it is will pass their turn.
+
+##### Post-Battle
+
+###### Standard
+
+###### Hardcore
+
+Upon death in PvP in hardcore, the player's characters do not die. Instead, the winning player should get to claim something from the enemy. Perhaps a character used in the battle or an item equipped on one of them?
+
+Alternatively, players might be able put up stakes at the beginning of the battle, which they can agree on before hand.
