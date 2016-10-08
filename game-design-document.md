@@ -84,7 +84,7 @@ I think a lot of this was covered in the High Concept. Perhaps I misused that se
 
 ### Story
 
-High Tech, Low Life, something something Cthulu
+High Tech, Low Life, something something Cthulu, madness
 
 ### Characters
 
@@ -98,46 +98,41 @@ I'd still like to use a Cyberpunk setting. However, it'd be great to mix it with
 
 ## Scenes
 
-The game will be split into three major scene types: Home, Field, and Battle. As well as these scenes, there will need to be the Menu scene type which can be used to display any data which doesn't fit into the game world.
+The game will be split into two major scene types: Field, and Battle.
 
-### Home
+As well as these scenes, there will need to be the Menu scene type which can be used to display any data which doesn't fit into the game world.
 
-Home is where the player can upgrade their characters and check out any other information before embarking on a mission in the Field. This is the same concept as in XCOM/Darkest Dungeon.
-
-An alternative to this, is to just have a continuous storyline with towns along the way.
-
-Finally, we could have both. Players could have their own base, which they can customize to their liking. As well as this, they can go to towns and log off there.
-
-#### Questions
-
-1. Base, Towns or Both?
-2. Can players see other players in Towns?
-3. Can players invite other players to their Bases?
+Menu can be an overlay on the current scene.
 
 ### Field
 
-Field is the world the player walks around in during the exploration phase of the gameplay. There are a few options I've thought of for this. The one I like the most is a metroid-vania style 2d map which is randomised with different parameters we can set.
+The Field is where most of the meat of the game will come from. There will be a storyline which takes you throughout the metroidvania style cityscape and beyond.
 
-- Metroidvania style 2d levels
-- Mother Russia Bleeds style 2.5d levels
+The unnamed protagonist is what the player will control while in the field. When a battle starts, the mercenaries they have hired will fight the battle.
 
-I don't want to include Darkest Dungeon style levels in here because I don't think they are really enjoyable, and the game mechanics don't fit with walking in a straight line.
+Level design should be similar to a 2d Dark Souls.
+
+There should be no loading screens. I hate those things. Also, they give players pause to decide to stop playing.
+
+The Field will play similarly to a 2d sidescroller, albeit less action-packed. The player will be able to speak to NPCS, solve puzzles, and do other things I have not yet thought of.
+
+We haven't decided whether or not enemies should appear in the field, or whether it'll be more like Pokemon/Final Fantasy, with random encounters.
+
+I suppose that we display enemies in the field, for the sake of Jazz's sanity, we should keep their movements outside of battle to a minimum.
+
+Example scenario: Some <generic humanoid enemy> is beating something - which is clearly already dead - with a pole. Walking up to this person triggers a battle.
+
+Example scenario: Some <generic muncher enemies> are huddled around some object of fascination. Walking up to them triggers a battle.
 
 #### Questions
 
-1. Should we make monsters visible before running into them and starting a battle?
-2. Should the player have all party members visible while walking around?
-  1. If so, should the characters all be controllable?
-  2. If so, we could set up some puzzles and things which require the use of multiple characters. (not a question, I know)
-3. Should the characters be able to jump? Climb ladders? Or just walk and use elevators or something?
+1. Should the player be able to jump? Climb ladders? Or just walk and use elevators or something?
 
 ### Battle
 
 The battle scene is where all combat happens. It's explained in depth under [Combat](#combat) As of now, this combat can't be influenced by any other scenes. For example, if enemies are visible in the Field, jumping onto their head to initiate a battle doesn't help or hinder the player.
 
-#### Questions
-
-1. Should combat be influenced by the Field?
+I'd like to create a situation in which if a player encounters an enemy in the field, they are thrust into battle in their current location, never truly leaving the field.
 
 ### Menu
 
