@@ -120,9 +120,9 @@ We haven't decided whether or not enemies should appear in the field, or whether
 
 I suppose that we display enemies in the field, for the sake of Jazz's sanity, we should keep their movements outside of battle to a minimum.
 
-Example scenario: Some <generic humanoid enemy> is beating something - which is clearly already dead - with a pole. Walking up to this person triggers a battle.
+Example scenario: Some `<generic humanoid enemy>` is beating something - which is clearly already dead - with a pole. Walking up to this person triggers a battle.
 
-Example scenario: Some <generic muncher enemies> are huddled around some object of fascination. Walking up to them triggers a battle.
+Example scenario: Some `<generic muncher enemies>` are huddled around some object of fascination. Walking up to them triggers a battle.
 
 #### Questions
 
