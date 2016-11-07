@@ -1,73 +1,151 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createSelector } from 'reselect';
-import { createAction } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 import createSagaMiddleware from 'redux-saga';
 import { call, select, take, put } from 'redux-saga/effects';
 import watch from 'redux-watch';
-
-const sagaMiddleware = createSagaMiddleware();
+import Gloop from 'gloop';
+import GameInputs from 'game-inputs';
 
 const initialState = {
-  player: {
-    position: {
-      x: 0, y: 0
-    }
-  },
+  entities: {},
   other: {}
 };
 
-// ACTIONS
 const Actions = {
-  MOVE: 'MOVE',
+  ENTITY_CREATE: 'ENTITY_CREATE',
+  ENTITY_MOVE: 'ENTITY_MOVE',
+  ENTITY_UPDATE_VELOCITY: 'ENTITY_UPDATE_VELOCITY'
 };
 
 // ACTION CREATORS
-const move = createAction(Actions.MOVE, (x, y) => ({ x, y }));
+const actionEntityCreate = createAction(Actions.ENTITY_CREATE, components => ({ components }));
+const actionEntityMove = createAction(Actions.ENTITY_MOVE, (id, x, y) => ({ id, x, y }));
+const actionEntityUpdateVelocity = createAction(Actions.ENTITY_UPDATE_VELOCITY, (id, x, y) => ({ id, x, y }))
 
 // REDUCERS
-const playerReducer = (state = initialState.player, action) => {
+const entityReducer = (state = initialState.entities, action) => {
+  let x, y, velX, velY;
   switch (action.type) {
-    case Actions.MOVE:
-      let { position: { x, y } } = state;
-      x += action.payload.x;
-      y += action.payload.y;
-      return { ...state, position: { x, y } };
+    case Actions.ENTITY_CREATE:
+      return {
+        ...state,
+        [Object.keys(state).length]: {
+          ...action.payload.components
+        }
+      };
+    case Actions.ENTITY_MOVE:
+      x = state[action.payload.id].position.x;
+      y = state[action.payload.id].position.y;
+      velX = state[action.payload.id].velocity.x;
+      velY = state[action.payload.id].velocity.y;
+      if (velX !== 0 || velY !== 0) {
+        return {
+          ...state,
+          [action.payload.id]: {
+            ...state[action.payload.id],
+            position: {
+              x: x + action.payload.x,
+              y: y + action.payload.y
+            }
+          }
+        };
+      } else {
+        return state;
+      }
+    case Actions.ENTITY_UPDATE_VELOCITY:
+      x = state[action.payload.id].velocity.x;
+      y = state[action.payload.id].velocity.y;
+      if (x !== action.payload.x || y !== action.payload.y) {
+        return {
+          ...state,
+          [action.payload.id]: {
+            ...state[action.payload.id],
+            velocity: {
+              x: action.payload.x,
+              y: action.payload.y
+            }
+          }
+        };
+      } else {
+        return state;
+      }
   }
   return state;
-};
+}
 
-const otherReducer = (state = initialState.other, action) => {
-  return state;
-};
+const otherReducer = (state = initialState.other, action) => (state);
 
 // BOOTSTRAPPING
 const reducer = combineReducers({
-  player: playerReducer,
+  entities: entityReducer,
   other: otherReducer
 });
-const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-// SUBSCRIPTION
+const store = createStore(reducer);
+
 store.subscribe(() => {
-  console.log(JSON.stringify(store.getState()));
+  console.log('state', JSON.stringify(store.getState()));
 });
 
-// store.subscribe(watch(store.getState, 'player.position')((newVal, oldVal, objectPath) => {
-  // console.log('%s changed from %s to %s', objectPath, oldVal, newVal);
-// }));
+// SYSTEMS
 
-let w = watch(store.getState, 'player.position');
-store.subscribe(w((newVal, oldVal, objectPath) => {
-  console.log('%s changed from %s to %s', objectPath, oldVal, newVal);
-}));
-
-// SAGAS
-export function* gameSaga() {
-  let playerAlive = true;
-  while (playerAlive) {
-    yield take(Actions.MOVE);
+const physicsSystem = entities => {
+  // Fall if not grounded
+  // Disabled for now due to console spam
+  for (let i in entities) {
+    // store.dispatch(move(i, 0, 9.8));
   }
+};
+
+const movementSystem = entities => {
+  for (let i in entities) {
+    if (entities[i].velocity.x || entities[i].velocity.y) {
+      store.dispatch(actionEntityMove(i, entities[i].velocity.x, entities[i].velocity.y));
+    }
+  }
+};
+
+const input = GameInputs(document.body);
+
+input.bind('move-left', 'A', '<left>');
+input.bind('move-right', 'D', '<right>');
+
+const handleInput = () => {
+  if (input.state['move-left']) {
+    store.dispatch(actionEntityUpdateVelocity(0, -5, 0));
+  } else if (input.state['move-right']) {
+    store.dispatch(actionEntityUpdateVelocity(0, 5, 0));
+  } else {
+    const { x, y } = selectVelocity(0, store.getState().entities);
+    if (x || y) store.dispatch(actionEntityUpdateVelocity(0, 0, 0));
+  }
+};
+
+const loop = new Gloop();
+
+loop.on('tick', dt => {
+  physicsSystem(store.getState().entities);
+  movementSystem(store.getState().entities);
+  handleInput();
+});
+
+loop.start();
+
+// SELECTORS
+const selectPosition = (id, state) => state[id].position;
+const selectVelocity = (id, state) => state[id].velocity;
+
+const Components = {
+  position: (x = 0, y = 0) => ({ x, y }),
+  velocity: (x = 0, y = 0) => ({ x, y }),
+  body: (grounded = false) => ({ grounded }),
+  sprite: (path, x, y) => ({ path, x, y })
 }
 
-sagaMiddleware.run(gameSaga);
-store.dispatch(move(1, 1));
+// CREATE PLAYER
+store.dispatch(actionEntityCreate({
+  position: Components.position(),
+  velocity: Components.velocity(),
+  body: Components.body(true)
+}));
